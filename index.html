@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dman Gadgets - Premium Electronics Store in Lagos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8a2e 100%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100%) rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: scaleIn 0.8s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.4s;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+
+        .cta-button:hover {
+            background: #2d2d2d;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 5rem 2rem;
+            background: #f8f8f8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #ffd700);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(255,215,0,0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(212,175,55,0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: #2d2d2d;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 1rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-specs {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .buy-button {
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            color: #1a1a1a;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(212,175,55,0.4);
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .feature-item h3 {
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            background: #f8f8f8;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #d4af37;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8a2e 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            min-width: 200px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .contact-item span {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #d4af37;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #ffd700;
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1a1a;
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo-text"> <img src=logo.png width=80px height=50></div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Dman Gadgets</h1>
+            <p>Lagos Premier Destination for Latest iPhones, Samsung, Apple Watches & Premium Audio</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Our Premium Collection</h2>
+            <div class="products-grid">
+                <!-- iPhone 15 Pro Max -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://i.pinimg.com/736x/65/99/0e/65990e98131d9846d52cec167d9b9c7d.jpg?w=400&h=400&fit=crop"  alt="iPhone 15 Pro Max" class="product-image">
+                    <h3>iPhone 15 Pro Max</h3>
+                    <p class="product-specs">256GB | Titanium | A17 Pro Chip</p>
+                    <p>Experience titanium design with the most powerful iPhone camera system ever.</p>
+                    <div class="product-price">₦1,650,000</div>
+                    <button class="buy-button" onclick="contactUs('iPhone 15 Pro Max')">Order Now</button>
+                </div>
+
+                <!-- iPhone 14 Pro -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://i.pinimg.com/1200x/9a/b8/f6/9ab8f692bda69263497e227217ef7165.jpg?w=400&h=400&fit=crop" alt="iPhone 14 Pro" class="product-image">
+                    <h3>iPhone 14 Pro</h3>
+                    <p class="product-specs">128GB | Deep Purple | Dynamic Island</p>
+                    <p>Pro camera system with 48MP Main camera for stunning detail.</p>
+                    <div class="product-price">₦1,200,000</div>
+                    <button class="buy-button" onclick="contactUs('iPhone 14 Pro')">Order Now</button>
+                </div>
+
+                <!-- Samsung S24 Ultra -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&h=400&fit=crop" alt="Samsung S24 Ultra" class="product-image">
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                    <p class="product-specs">256GB | AI Features | S Pen</p>
+                    <p>Galaxy AI with 200MP camera and titanium frame design.</p>
+                    <div class="product-price">₦1,450,000</div>
+                    <button class="buy-button" onclick="contactUs('Samsung S24 Ultra')">Order Now</button>
+                </div>
+
+                <!-- Samsung S23 -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://i.pinimg.com/736x/2f/1e/de/2f1ededdd5c594cdf9d30f73f916a652.jpg?w=400&h=400&fit=crop" alt="Samsung S23" class="product-image">
+                    <h3>Samsung Galaxy S23</h3>
+                    <p class="product-specs">128GB | Snapdragon 8 Gen 2</p>
+                    <p>Premium flagship with powerful performance and amazing camera.</p>
+                    <div class="product-price">₦850,000</div>
+                    <button class="buy-button" onclick="contactUs('Samsung S23')">Order Now</button>
+                </div>
+
+                <!-- Apple Watch Series 9 -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop" alt="Apple Watch Series 9" class="product-image">
+                    <h3>Apple Watch Series 9</h3>
+                    <p class="product-specs">45mm | GPS + Cellular | Always-On Display</p>
+                    <p>Advanced health features with double tap gesture control.</p>
+                    <div class="product-price">₦650,000</div>
+                    <button class="buy-button" onclick="contactUs('Apple Watch Series 9')">Order Now</button>
+                </div>
+
+                <!-- Apple Watch SE -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=400&fit=crop" alt="Apple Watch SE" class="product-image">
+                    <h3>Apple Watch SE</h3>
+                    <p class="product-specs">40mm | GPS | Fitness Tracking</p>
+                    <p>Essential Apple Watch features at an incredible value.</p>
+                    <div class="product-price">₦380,000</div>
+                    <button class="buy-button" onclick="contactUs('Apple Watch SE')">Order Now</button>
+                </div>
+
+                <!-- JBL Flip 6 -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop" alt="JBL Flip 6" class="product-image">
+                    <h3>JBL Flip 6</h3>
+                    <p class="product-specs">IP67 Waterproof | 12hrs Battery | PartyBoost</p>
+                    <p>Powerful portable speaker with bold JBL Original Pro Sound.</p>
+                    <div class="product-price">₦85,000</div>
+                    <button class="buy-button" onclick="contactUs('JBL Flip 6')">Order Now</button>
+                </div>
+
+                <!-- JBL Charge 5 -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1589003077984-894e133dabab?w=400&h=400&fit=crop" alt="JBL Charge 5" class="product-image">
+                    <h3>JBL Charge 5</h3>
+                    <p class="product-specs">Powerbank Feature | 20hrs Battery</p>
+                    <p>Deep bass and long playtime with built-in powerbank.</p>
+                    <div class="product-price">₦120,000</div>
+                    <button class="buy-button" onclick="contactUs('JBL Charge 5')">Order Now</button>
+                </div>
+
+                <!-- Wireless Speaker -->
+                <div class="product-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400&h=400&fit=crop" alt="Wireless Speaker" class="product-image">
+                    <h3>Premium Wireless Speaker</h3>
+                    <p class="product-specs">Bluetooth 5.0 | 360° Sound</p>
+                    <p>Immersive audio experience with crystal clear sound quality.</p>
+                    <div class="product-price">₦45,000</div>
+                    <button class="buy-button" onclick="contactUs('Wireless Speaker')">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="features">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Choose Dman Gadgets?</h2>
+            <div class="features-grid">
+                <div class="feature-item scroll-reveal">
+                    <div class="feature-icon">✓</div>
+                    <h3>100% Authentic</h3>
+                    <p>All products are genuine and sourced from authorized distributors</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <div class="feature-icon">💎</div>
+                    <h3>Premium Quality</h3>
+                    <p>Only the best and latest technology for our valued customers</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and reliable delivery across Lagos and Nigeria</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <div class="feature-icon">💬</div>
+                    <h3>Expert Support</h3>
+                    <p>Professional customer service always ready to assist you</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">What Our Customers Say</h2>
+            <div class="testimonial-slider scroll-reveal">
+                <p class="testimonial-text">"Best gadget store in Lagos! Got my iPhone 15 Pro Max at a great price with excellent customer service. Highly recommended!"</p>
+                <p class="testimonial-author">- Chidi O., Lagos</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <p>Ready to upgrade your tech? Contact us today!</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📱</span>
+                <h3>WhatsApp</h3>
+                <p>+234 906 556 8844</p>
+            </div>
+            <div class="contact-item">
+                <span>📧</span>
+                <h3>Email</h3>
+                <p>dmangadgets@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <h3>Location</h3>
+                <p>Lagos/Awka, Nigeria</p>
+            </div>
+            <div class="contact-item">
+                <span>🕒</span>
+                <h3>Hours</h3>
+                <p>Mon - Sat: 9AM - 7PM</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dman Gadgets. All Rights Reserved.</p>
+        <p>Your Trusted Premium Electronics Store in Lagos</p>
+        <div class="social-links">
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="WhatsApp">💬</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Contact Function
+        function contactUs(product) {
+            alert(`Thank you for your interest in ${product}!\n\nPlease contact us via:\nWhatsApp: +234 906 556 8844\nEmail: dmangadgets@gmailcom.com\n\nOr visit our store in Lagos/Awka!`);
+        }
+
+        // Initialize animations on scroll
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Add floating animation to hero
+        let floatOffset = 0;
+        setInterval(() => {
+            floatOffset += 0.5;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${Math.sin(floatOffset / 20) * 10}px)`;
+            }
+        }, 50);
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Product card tilt effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Animate numbers on scroll
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start).toLocaleString('en-NG');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+</html>
